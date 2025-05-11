@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online PDF tools - Convert images to PDF, PDF to images, merge PDFs, compress images, and more. All tools work directly in your browser.">
+    <meta name="keywords" content="PDF tools, image to PDF, PDF to image, PDF merge, image compression, PDF to ZIP, image to ZIP">
+    <meta name="author" content="PDF Tools Online">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free Online PDF Tools - Convert, Merge, Compress">
+    <meta property="og:description" content="All-in-one PDF tools for your document needs. Free, fast, and secure.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourpdftoolswebsite.com">
+    <title>Free PDF Tools Online | Convert, Merge, Compress</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a6bff;
+            --secondary-color: #f8f9fa;
+            --accent-color: #ff6b6b;
+            --dark-color: #343a40;
+            --light-color: #ffffff;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 2rem;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 20px;
+            border: none;
+            overflow: hidden;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tool-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+        }
+        
+        .btn-primary:hover {
+            background-color: #3a56d4;
+        }
+        
+        .ad-container {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+            border: 1px dashed #ccc;
+            text-align: center;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+        
+        .feature-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+        
+        .how-it-works {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 2rem 0;
+            }
+            
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .tool-card {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-file-pdf me-2"></i>PDF Tools
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tools">Tools</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how-it-works">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-4">All Your PDF Tools in One Place</h1>
+            <p class="lead mb-5">Convert, merge, compress, and transform your documents with our free online tools. No installation required.</p>
+            <a href="#tools" class="btn btn-light btn-lg px-4 me-2">Explore Tools</a>
+            <a href="#how-it-works" class="btn btn-outline-light btn-lg px-4">How It Works</a>
+        </div>
+    </section>
+
+    <!-- Ad Container Top -->
+    <div class="container">
+        <div class="ad-container">
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <!-- Top Banner Ad -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+    <!-- Tools Section -->
+    <section id="tools" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Our Powerful PDF Tools</h2>
+                <p class="text-muted">Select any tool below to get started</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+    <div class="tool-card h-100 text-center p-4">
+        <div class="tool-icon">
+            <i class="fas fa-image"></i>
+        </div>
+        <h4>Image to PDF</h4>
+        <p class="text-muted">Convert JPG, PNG, or other image files to PDF documents.</p>
+        <a href="image-to-pdf.html" class="btn btn-primary mt-3">Use Tool</a>
+    </div>
+</div>                
+                <!-- PDF to Image -->
+                <div class="col-md-4">
+    <div class="tool-card h-100 text-center p-4">
+        <div class="tool-icon">
+            <i class="fas fa-file-image"></i>
+        </div>
+        <h4>PDF to Image</h4>
+        <p class="text-muted">Extract images from PDF files or convert PDF pages to images.</p>
+        <a href="pdf-to-image.html" class="btn btn-primary mt-3" onclick="openTool('pdf-to-image'); return false;">Use Tool</a>
+    </div>
+</div>                
+                <!-- Image Compression -->
+                <div class="col-md-4">
+    <div class="tool-card h-100 text-center p-4">
+        <div class="tool-icon">
+            <i class="fas fa-compress-alt"></i>
+        </div>
+        <h4>Image Compression</h4>
+        <p class="text-muted">Reduce image file size without losing quality.</p>
+        <a href="image-compression.html" class="btn btn-primary mt-3" onclick="openTool('image-compression'); return false;">Use Tool</a>
+    </div>
+</div>                
+                <!-- PDF to ZIP -->
+         <div class="col-md-4">
+    <div class="tool-card h-100 text-center p-4">
+        <div class="tool-icon">
+            <i class="fas fa-file-archive"></i>
+        </div>
+        <h4>PDF to ZIP</h4>
+        <p class="text-muted">Convert and compress PDF files into ZIP archives.</p>
+        <a href="/pdf-to-zip" class="btn btn-primary mt-3">Use Tool</a>
+    </div>
+</div>                
+                <!-- Image to ZIP -->
+                <div class="col-md-4">
+    <div class="tool-card h-100 text-center p-4">
+        <div class="tool-icon">
+            <i class="fas fa-images"></i>
+        </div>
+        <h4>Image to ZIP</h4>
+        <p class="text-muted">Compress multiple images into a single ZIP file.</p>
+        <a href="/image-to-zip" class="btn btn-primary mt-3">Use Tool</a>
+    </div>
+</div>                
+                <!-- PDF Merge -->
+                <div class="col-md-4">
+    <div class="tool-card h-100 text-center p-4">
+        <div class="tool-icon">
+            <i class="fas fa-object-group"></i>
+        </div>
+        <h4>PDF Merge</h4>
+        <p class="text-muted">Combine multiple PDF files into a single document.</p>
+        <a href="pdf-merge.html" onclick="openTool('pdf-merge'); return false;" 
+           class="btn btn-primary mt-3 d-inline-block">Use Tool</a>
+    </div>
+</div>
+      
+        
+    </section>
+
+    <!-- Ad Container Middle -->
+    <div class="container">
+        <div class="ad-container">
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <!-- Middle Rectangle Ad -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">How Our Tools Work</h2>
+                <p class="text-muted">Simple steps to transform your documents</p>
+            </div>
+            
+            <div class="how-it-works">
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <h4><span class="step-number">1</span> Upload Files</h4>
+                        <p>Select your files from your computer or drag and drop them into the upload area.</p>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <h4><span class="step-number">2</span> Process Files</h4>
+                        <p>Our tools will automatically process your files with the selected operation.</p>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <h4><span class="step-number">3</span> Download Result</h4>
+                        <p>Download your processed files instantly. No waiting, no watermarks.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4">
+                <div class="alert alert-info">
+                    <i class="fas fa-lock me-2"></i> <strong>Privacy Guaranteed:</strong> All file processing happens in your browser. We never upload your files to our servers.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="fw-bold mb-4">Why Choose Our PDF Tools?</h2>
+                    <div class="d-flex mb-3">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div>
+                            <h5>Fast Processing</h5>
+                            <p class="text-muted">Our tools use advanced algorithms to process your files quickly without compromising quality.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <div class="feature-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div>
+                            <h5>Secure & Private</h5>
+                            <p class="text-muted">Your files never leave your computer. All processing happens in your browser.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <div class="feature-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div>
+                            <h5>100% Free</h5>
+                            <p class="text-muted">All tools are completely free to use with no hidden charges or watermarks.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://via.placeholder.com/600x400" alt="PDF Tools Interface" class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Container Bottom -->
+    <div class="container">
+        <div class="ad-container">
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <!-- Bottom Banner Ad -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">About PDF Tools</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <p class="lead">PDF Tools is a free online platform that provides essential document conversion and manipulation tools. Our mission is to make document processing accessible to everyone without the need for expensive software or complicated installations.</p>
+                    <p>All our tools are developed with modern web technologies to ensure fast, secure, and reliable performance across all devices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Contact Us</h2>
+                <p class="text-muted">Have questions or suggestions? We'd love to hear from you!</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary px-4">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="mb-3">PDF Tools</h5>
+                    <p>Your all-in-one solution for PDF and image conversion needs. Free, fast, and secure.</p>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5 class="mb-3">Tools</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Image to PDF</a></li>
+                        <li><a href="#" class="text-white">PDF to Image</a></li>
+                        <li><a href="#" class="text-white">Image Compression</a></li>
+                        <li><a href="#" class="text-white">PDF Merge</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5 class="mb-3">Company</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">About Us</a></li>
+                        <li><a href="#" class="text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="mb-3">Subscribe to Our Newsletter</h5>
+                    <form class="mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Your Email">
+                            <button class="btn btn-primary" type="button">Subscribe</button>
+                        </div>
+                    </form>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2023 PDF Tools. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Made with <i class="fas fa-heart text-danger"></i> for document enthusiasts</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Function to open tools (would be implemented in separate pages)
+        function openTool(toolName) {
+            // In a real implementation, this would redirect to the specific tool page
+            alert(`Opening ${toolName.replace(/-/g, ' ')} tool. This would redirect to the tool page in a real implementation.`);
+            
+            // Example of what would happen:
+            // window.location.href = `/tools/${toolName}.html`;
+        }
+        
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+        
+        // Google Analytics tracking (uncomment and add your GA ID)
+        /*
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-XXXXX-Y', 'auto');
+        ga('send', 'pageview');
+        */
+    </script>
+</body>
+</html>
