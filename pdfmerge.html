@@ -167,10 +167,83 @@
         footer a:hover {
             color: #d1d3e2 !important;
         }
+        
+        /* Title Banner */
+        .title-banner {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        }
+        
+        .title-banner h1 {
+            font-weight: 700;
+            font-size: 2.5rem;
+        }
+        
+        .title-banner p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Feature Icons */
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* FAQ Section */
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            color: var(--accent-color);
+            cursor: pointer;
+        }
+        
+        .faq-answer {
+            padding-top: 0.5rem;
+        }
+        
+        /* User Guidance Section */
+        .step-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .add-more-btn {
+            margin-top: 1rem;
+        }
     </style>
 </head>
 <body>
-    <header class="bg-primary text-white py-4">
+    <header class="bg-primary text-white py-3">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-8">
@@ -194,6 +267,39 @@
     </header>
 
     <main class="container my-5">
+        <!-- Title Banner -->
+        <section class="title-banner text-center">
+            <div class="container">
+                <h1>Merge PDF Files Online for Free</h1>
+                <p class="lead">Combine multiple PDFs into one document with ease. No registration required.</p>
+            </div>
+        </section>
+        
+        <!-- Features Section -->
+        <section class="row mb-5">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 text-center p-3">
+                    <i class="fas fa-file-pdf feature-icon"></i>
+                    <h3>Merge PDFs</h3>
+                    <p>Combine multiple PDF files into a single document in seconds.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 text-center p-3">
+                    <i class="fas fa-compress-alt feature-icon"></i>
+                    <h3>Compress PDFs</h3>
+                    <p>Reduce file size with our smart compression options.</p>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 text-center p-3">
+                    <i class="fas fa-lock feature-icon"></i>
+                    <h3>Secure & Private</h3>
+                    <p>Your files are processed in your browser and never uploaded to our servers.</p>
+                </div>
+            </div>
+        </section>
+
         <div class="row">
             <div class="col-lg-8">
                 <div class="card shadow-sm mb-4">
@@ -210,7 +316,12 @@
                         </div>
                         
                         <div id="file-list" class="mt-4 d-none">
-                            <h3 class="h6 mb-3">Selected Files:</h3>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h3 class="h6 mb-0">Selected Files:</h3>
+                                <button id="add-more-btn" class="btn btn-sm btn-outline-primary add-more-btn">
+                                    <i class="fas fa-plus me-1"></i> Add More Files
+                                </button>
+                            </div>
                             <ul id="file-items" class="list-group"></ul>
                         </div>
                     </div>
@@ -248,6 +359,114 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- User Guidance Section -->
+                <section class="card shadow-sm mb-4">
+                    <div class="card-header bg-light">
+                        <h2 class="h5 mb-0">How to Merge PDF Files</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="card step-card shadow-sm p-3">
+                                    <div class="d-flex align-items-start">
+                                        <div class="step-number">1</div>
+                                        <div>
+                                            <h4 class="h6 mb-2">Select PDF Files</h4>
+                                            <p class="small mb-0">Click "Select Files" or drag and drop PDFs into the upload area.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card step-card shadow-sm p-3">
+                                    <div class="d-flex align-items-start">
+                                        <div class="step-number">2</div>
+                                        <div>
+                                            <h4 class="h6 mb-2">Arrange Files</h4>
+                                            <p class="small mb-0">Drag files to reorder them as needed for your merged document.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card step-card shadow-sm p-3">
+                                    <div class="d-flex align-items-start">
+                                        <div class="step-number">3</div>
+                                        <div>
+                                            <h4 class="h6 mb-2">Set Options</h4>
+                                            <p class="small mb-0">Choose compression level and output filename.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card step-card shadow-sm p-3">
+                                    <div class="d-flex align-items-start">
+                                        <div class="step-number">4</div>
+                                        <div>
+                                            <h4 class="h6 mb-2">Merge & Download</h4>
+                                            <p class="small mb-0">Click "Merge PDFs" and download your combined file.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- FAQ Section -->
+                <section class="card shadow-sm mb-4">
+                    <div class="card-header bg-light">
+                        <h2 class="h5 mb-0">Frequently Asked Questions</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="faq-item">
+                            <div class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                <i class="fas fa-chevron-right me-2"></i> Is it free to merge PDF files?
+                            </div>
+                            <div id="faq1" class="faq-answer collapse show">
+                                Yes, our PDF merge tool is completely free to use with no hidden charges. You can merge as many PDFs as you need without any limitations.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                <i class="fas fa-chevron-right me-2"></i> Are my PDF files secure?
+                            </div>
+                            <div id="faq2" class="faq-answer collapse">
+                                Absolutely! Your files are processed directly in your browser and never uploaded to our servers. This ensures maximum privacy and security for your documents.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                <i class="fas fa-chevron-right me-2"></i> How many PDFs can I merge at once?
+                            </div>
+                            <div id="faq3" class="faq-answer collapse">
+                                You can merge up to 20 PDF files at once with a total size limit of 50MB. For larger documents, we recommend splitting them into smaller batches.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                <i class="fas fa-chevron-right me-2"></i> What compression options are available?
+                            </div>
+                            <div id="faq4" class="faq-answer collapse">
+                                We offer four compression levels: No compression (best quality), Low compression (good quality), Medium compression (balanced), and High compression (smallest file size). You can also optimize images separately.
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                <i class="fas fa-chevron-right me-2"></i> Can I reorder pages after uploading?
+                            </div>
+                            <div id="faq5" class="faq-answer collapse">
+                                Yes, you can drag and drop files to reorder them before merging. The pages will appear in the merged document in the order you specify.
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
             
             <div class="col-lg-4">
@@ -268,7 +487,7 @@
                 
                 <div class="card shadow-sm mb-4">
                     <div class="card-header bg-light">
-                        <h2 class="h5 mb-0">How to Use</h2>
+                        <h2 class="h5 mb-0">Quick Guide</h2>
                     </div>
                     <div class="card-body">
                         <ol class="list-group list-group-numbered">
@@ -278,6 +497,22 @@
                             <li class="list-group-item border-0 px-0 py-1">Click "Merge PDFs" button</li>
                             <li class="list-group-item border-0 px-0 py-1">Download your merged file</li>
                         </ol>
+                    </div>
+                </div>
+                
+                <!-- Benefits Card -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-light">
+                        <h2 class="h5 mb-0">Why Use Our PDF Merger?</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item border-0 px-0 py-1"><i class="fas fa-check-circle text-success me-2"></i> No file size limits</li>
+                            <li class="list-group-item border-0 px-0 py-1"><i class="fas fa-check-circle text-success me-2"></i> No watermarks added</li>
+                            <li class="list-group-item border-0 px-0 py-1"><i class="fas fa-check-circle text-success me-2"></i> Secure processing</li>
+                            <li class="list-group-item border-0 px-0 py-1"><i class="fas fa-check-circle text-success me-2"></i> Fast merging</li>
+                            <li class="list-group-item border-0 px-0 py-1"><i class="fas fa-check-circle text-success me-2"></i> Works on all devices</li>
+                        </ul>
                     </div>
                 </div>
                 
@@ -401,6 +636,7 @@
             const dropArea = document.getElementById('drop-area');
             const fileInput = document.getElementById('file-input');
             const browseBtn = document.getElementById('browse-btn');
+            const addMoreBtn = document.getElementById('add-more-btn');
             const fileList = document.getElementById('file-list');
             const fileItems = document.getElementById('file-items');
             const mergeBtn = document.getElementById('merge-btn');
@@ -452,6 +688,7 @@
             
             // Handle file selection via button
             browseBtn.addEventListener('click', () => fileInput.click());
+            addMoreBtn.addEventListener('click', () => fileInput.click());
             fileInput.addEventListener('change', () => handleFiles(fileInput.files));
             
             // Process selected files
@@ -725,6 +962,20 @@
             document.getElementById('progressModal').addEventListener('hidden.bs.modal', function() {
                 mergeProgress.style.width = '0%';
             });
+            
+            // Initialize FAQ collapse functionality
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', function() {
+                    const icon = this.querySelector('i');
+                    if (icon.classList.contains('fa-chevron-right')) {
+                        icon.classList.remove('fa-chevron-right');
+                        icon.classList.add('fa-chevron-down');
+                    } else {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-right');
+                    }
+                });
+            });
         });
     </script>
 
@@ -742,6 +993,10 @@
         "@type": "Offer",
         "price": "0",
         "priceCurrency": "USD"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "PDF Tools"
       }
     }
     </script>
