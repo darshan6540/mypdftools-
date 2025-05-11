@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert PDF or TXT files to ZIP archives with rename option. Free online tools, works in your browser.">
+    <title>File to ZIP Converter - Free Online Tools</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .tools-banner {
+            background: linear-gradient(135deg, #4a6bff, #6a11cb);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .converter-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .upload-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .upload-btn:hover {
+            border-color: #4a6bff;
+            background-color: rgba(74, 107, 255, 0.05);
+        }
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+        }
+        .file-name {
+            flex-grow: 1;
+            margin: 0 0.5rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .action-btn {
+            background: none;
+            border: none;
+            color: #6c757d;
+            cursor: pointer;
+        }
+        .progress-container, .download-container {
+            display: none;
+            margin-top: 1.5rem;
+        }
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1.5rem;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .guide-step {
+            display: flex;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+        .step-number {
+            background-color: #4a6bff;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            font-size: 0.8rem;
+        }
+        .features-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .features-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        .features-list li:before {
+            content: "✓";
+            color: #4a6bff;
+            position: absolute;
+            left: 0;
+        }
+        .nav-tabs .nav-link {
+            color: #495057;
+            font-weight: 500;
+        }
+        .nav-tabs .nav-link.active {
+            color: #4a6bff;
+            font-weight: 600;
+        }
+        .tab-pane {
+            padding-top: 1.5rem;
+        }
+        .tool-icon {
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="tools-banner">
+        <div class="container text-center">
+            <h1><i class="fas fa-tools me-2"></i>File Conversion Tools</h1>
+            <p class="lead">Free online tools for working with PDF and text files</p>
+        </div>
+    </div>
+
+    <div class="container py-3">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="converter-container">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pdf-tab" data-bs-toggle="tab" data-bs-target="#pdf-tab-pane" type="button" role="tab">
+                                <i class="fas fa-file-pdf tool-icon text-danger"></i>PDF to ZIP
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="txt-tab" data-bs-toggle="tab" data-bs-target="#txt-tab-pane" type="button" role="tab">
+                                <i class="fas fa-file-alt tool-icon text-info"></i>TXT to ZIP
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <!-- PDF to ZIP Tab -->
+                        <div class="tab-pane fade show active" id="pdf-tab-pane" role="tabpanel" aria-labelledby="pdf-tab" tabindex="0">
+                            <h3 class="mb-4"><i class="fas fa-file-pdf text-danger me-2"></i>PDF to ZIP Converter</h3>
+                            
+                            <div class="alert alert-info mb-4">
+                                <i class="fas fa-info-circle me-2"></i> Convert multiple PDF files into a single ZIP archive. 
+                                Rename files before conversion. Works entirely in your browser.
+                            </div>
+                            
+                            <div id="pdfUploadBtn" class="upload-btn mb-4">
+                                <i class="fas fa-folder-open fa-3x text-primary mb-3"></i>
+                                <h5>Select PDF Files</h5>
+                                <p class="text-muted">Click to browse or drag files</p>
+                                <input type="file" id="pdfFileInput" accept=".pdf" multiple style="display: none;">
+                            </div>
+                            
+                            <div id="pdfFileList" class="file-list mb-3"></div>
+                            
+                            <div class="d-flex justify-content-between">
+                                <button id="pdfClearAllBtn" class="btn btn-outline-danger" style="display: none;">
+                                    <i class="fas fa-trash-alt me-1"></i>Clear All
+                                </button>
+                                <button id="pdfConvertBtn" class="btn btn-primary" disabled>
+                                    <i class="fas fa-file-archive me-1"></i>Convert to ZIP
+                                </button>
+                            </div>
+                            
+                            <div id="pdfProgressContainer" class="progress-container">
+                                <div class="progress mb-2">
+                                    <div id="pdfProgressBar" class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%"></div>
+                                </div>
+                                <p id="pdfProgressText" class="text-muted">Processing files...</p>
+                            </div>
+                            
+                            <div id="pdfDownloadContainer" class="download-container">
+                                <div class="alert alert-success mb-3">
+                                    <i class="fas fa-check-circle me-2"></i>Conversion completed!
+                                </div>
+                                <a id="pdfDownloadBtn" class="btn btn-success btn-lg" download>
+                                    <i class="fas fa-download me-2"></i>Download ZIP
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- TXT to ZIP Tab -->
+                        <div class="tab-pane fade" id="txt-tab-pane" role="tabpanel" aria-labelledby="txt-tab" tabindex="0">
+                            <h3 class="mb-4"><i class="fas fa-file-alt text-info me-2"></i>TXT to ZIP Converter</h3>
+                            
+                            <div class="alert alert-info mb-4">
+                                <i class="fas fa-info-circle me-2"></i> Convert multiple text files into a single ZIP archive. 
+                                Rename files before conversion. Works entirely in your browser.
+                            </div>
+                            
+                            <div id="txtUploadBtn" class="upload-btn mb-4">
+                                <i class="fas fa-folder-open fa-3x text-primary mb-3"></i>
+                                <h5>Select TXT Files</h5>
+                                <p class="text-muted">Click to browse or drag files</p>
+                                <input type="file" id="txtFileInput" accept=".txt,.text" multiple style="display: none;">
+                            </div>
+                            
+                            <div id="txtFileList" class="file-list mb-3"></div>
+                            
+                            <div class="d-flex justify-content-between">
+                                <button id="txtClearAllBtn" class="btn btn-outline-danger" style="display: none;">
+                                    <i class="fas fa-trash-alt me-1"></i>Clear All
+                                </button>
+                                <button id="txtConvertBtn" class="btn btn-primary" disabled>
+                                    <i class="fas fa-file-archive me-1"></i>Convert to ZIP
+                                </button>
+                            </div>
+                            
+                            <div id="txtProgressContainer" class="progress-container">
+                                <div class="progress mb-2">
+                                    <div id="txtProgressBar" class="progress-bar progress-bar-striped progress-bar-animated" style="width: 0%"></div>
+                                </div>
+                                <p id="txtProgressText" class="text-muted">Processing files...</p>
+                            </div>
+                            
+                            <div id="txtDownloadContainer" class="download-container">
+                                <div class="alert alert-success mb-3">
+                                    <i class="fas fa-check-circle me-2"></i>Conversion completed!
+                                </div>
+                                <a id="txtDownloadBtn" class="btn btn-success btn-lg" download>
+                                    <i class="fas fa-download me-2"></i>Download ZIP
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="converter-container">
+                    <h3 class="mb-4"><i class="fas fa-question-circle text-primary me-2"></i>How to Use</h3>
+                    
+                    <div class="guide-step">
+                        <div class="step-number">1</div>
+                        <div>Select the appropriate tab for your file type (PDF or TXT)</div>
+                    </div>
+                    
+                    <div class="guide-step">
+                        <div class="step-number">2</div>
+                        <div>Click the upload area or drag and drop files into it</div>
+                    </div>
+                    
+                    <div class="guide-step">
+                        <div class="step-number">3</div>
+                        <div>Optionally rename files by clicking the edit icon next to each file</div>
+                    </div>
+                    
+                    <div class="guide-step">
+                        <div class="step-number">4</div>
+                        <div>Click "Convert to ZIP" to process your files</div>
+                    </div>
+                    
+                    <div class="guide-step">
+                        <div class="step-number">5</div>
+                        <div>Download your ZIP archive when the conversion is complete</div>
+                    </div>
+                    
+                    <h4 class="mt-4 mb-3">Features</h4>
+                    <ul class="features-list">
+                        <li>100% free with no registration required</li>
+                        <li>Processes files in your browser (no server upload)</li>
+                        <li>Rename files before conversion</li>
+                        <li>Supports batch processing of multiple files</li>
+                        <li>No file size limits (limited only by your device memory)</li>
+                        <li>No watermarks or ads</li>
+                        <li>Supports both PDF and TXT file formats</li>
+                    </ul>
+                </div>
+                
+                <div class="converter-container">
+                    <h3 class="mb-4"><i class="fas fa-question-circle text-primary me-2"></i>Frequently Asked Questions</h3>
+                    
+                    <div class="faq-item">
+                        <h5>Is this tool really free?</h5>
+                        <p class="text-muted">Yes, all our conversion tools are completely free to use with no hidden charges. There are no premium features or subscriptions.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h5>Are my files uploaded to a server?</h5>
+                        <p class="text-muted">No, all processing happens directly in your browser. Your files never leave your device, ensuring maximum privacy and security.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h5>Is there a file size limit?</h5>
+                        <p class="text-muted">The tools are limited only by your device's memory. Very large files (hundreds of MB) might cause performance issues on some devices.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h5>What if I need to convert ZIP back to original files?</h5>
+                        <p class="text-muted">ZIP is just an archive format. You can extract the original files from the ZIP using any standard archive tool like WinRAR, 7-Zip, or the built-in tools in Windows and macOS.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h5>Can I convert other file types with these tools?</h5>
+                        <p class="text-muted">Currently we support PDF and TXT files. For other conversions, you might need different specialized tools.</p>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <h5>Why would I need to convert files to ZIP?</h5>
+                        <p class="text-muted">Common reasons include: compressing multiple files for email attachments, organizing related documents together, or preparing files for download from a website.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light py-4 mt-4">
+        <div class="container text-center text-muted">
+            <p>© 2023 File Conversion Tools. All rights reserved. Free online tools for your documents.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Bootstrap tabs
+            const tabElms = document.querySelectorAll('button[data-bs-toggle="tab"]');
+            tabElms.forEach(tabEl => {
+                tabEl.addEventListener('shown.bs.tab', function (event) {
+                    // Reset all file lists when switching tabs
+                    resetAllTools();
+                });
+            });
+
+            function resetAllTools() {
+                // Reset PDF tool
+                pdfFiles = [];
+                updatePdfFileList();
+                
+                // Reset TXT tool
+                txtFiles = [];
+                updateTxtFileList();
+            }
+
+            // PDF to ZIP Tool
+            const pdfFileInput = document.getElementById('pdfFileInput');
+            const pdfUploadBtn = document.getElementById('pdfUploadBtn');
+            const pdfFileList = document.getElementById('pdfFileList');
+            const pdfConvertBtn = document.getElementById('pdfConvertBtn');
+            const pdfClearAllBtn = document.getElementById('pdfClearAllBtn');
+            const pdfProgressContainer = document.getElementById('pdfProgressContainer');
+            const pdfDownloadContainer = document.getElementById('pdfDownloadContainer');
+            
+            let pdfFiles = [];
+
+            // PDF File selection
+            pdfUploadBtn.addEventListener('click', () => pdfFileInput.click());
+            pdfFileInput.addEventListener('change', handlePdfFileSelect);
+
+            // PDF Drag and drop functionality
+            pdfUploadBtn.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                pdfUploadBtn.style.borderColor = '#4a6bff';
+                pdfUploadBtn.style.backgroundColor = 'rgba(74, 107, 255, 0.1)';
+            });
+
+            pdfUploadBtn.addEventListener('dragleave', (e) => {
+                e.preventDefault();
+                pdfUploadBtn.style.borderColor = '#ddd';
+                pdfUploadBtn.style.backgroundColor = '';
+            });
+
+            pdfUploadBtn.addEventListener('drop', (e) => {
+                e.preventDefault();
+                pdfUploadBtn.style.borderColor = '#ddd';
+                pdfUploadBtn.style.backgroundColor = '';
+                
+                if (e.dataTransfer.files.length) {
+                    pdfFileInput.files = e.dataTransfer.files;
+                    handlePdfFileSelect({ target: pdfFileInput });
+                }
+            });
+
+            function handlePdfFileSelect(e) {
+                const newFiles = Array.from(e.target.files).filter(file => 
+                    file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')
+                );
+                
+                if (newFiles.length === 0) {
+                    alert('Please select PDF files only.');
+                    return;
+                }
+                
+                pdfFiles = newFiles.map(file => ({
+                    file: file,
+                    originalName: file.name,
+                    customName: file.name.replace(/\.[^/.]+$/, "")
+                }));
+                
+                updatePdfFileList();
+                pdfFileInput.value = '';
+            }
+
+            function updatePdfFileList() {
+                pdfFileList.innerHTML = '';
+                
+                if (pdfFiles.length === 0) {
+                    pdfFileList.innerHTML = '<div class="text-center py-3 text-muted">No files selected</div>';
+                    pdfClearAllBtn.style.display = 'none';
+                    pdfConvertBtn.disabled = true;
+                    return;
+                }
+                
+                pdfClearAllBtn.style.display = 'inline-block';
+                pdfConvertBtn.disabled = false;
+                
+                pdfFiles.forEach((fileObj, index) => {
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'file-item';
+                    
+                    fileItem.innerHTML = `
+                        <i class="fas fa-file-pdf text-danger me-2"></i>
+                        <span class="file-name" title="${fileObj.customName}.pdf">${fileObj.customName}.pdf</span>
+                        <span class="text-muted me-2">${formatFileSize(fileObj.file.size)}</span>
+                        <button class="action-btn rename-btn" data-index="${index}" title="Rename">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="action-btn remove-btn" data-index="${index}" title="Remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    
+                    pdfFileList.appendChild(fileItem);
+                });
+                
+                // Add event listeners for rename/remove
+                document.querySelectorAll('#pdfFileList .rename-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const index = e.currentTarget.getAttribute('data-index');
+                        renamePdfFile(index);
+                    });
+                });
+                
+                document.querySelectorAll('#pdfFileList .remove-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const index = e.currentTarget.getAttribute('data-index');
+                        pdfFiles.splice(index, 1);
+                        updatePdfFileList();
+                    });
+                });
+            }
+            
+            function renamePdfFile(index) {
+                const newName = prompt('Enter new file name (without extension):', pdfFiles[index].customName);
+                if (newName && newName.trim() !== '') {
+                    pdfFiles[index].customName = newName.trim();
+                    updatePdfFileList();
+                }
+            }
+            
+            pdfClearAllBtn.addEventListener('click', () => {
+                pdfFiles = [];
+                updatePdfFileList();
+            });
+            
+            pdfConvertBtn.addEventListener('click', async function() {
+                if (pdfFiles.length === 0) return;
+                
+                pdfConvertBtn.disabled = true;
+                pdfProgressContainer.style.display = 'block';
+                
+                try {
+                    const zip = new JSZip();
+                    let processed = 0;
+                    
+                    for (const fileObj of pdfFiles) {
+                        const fileData = await readFile(fileObj.file);
+                        zip.file(`${fileObj.customName}.pdf`, fileData);
+                        
+                        processed++;
+                        const progress = Math.round((processed / pdfFiles.length) * 100);
+                        document.getElementById('pdfProgressBar').style.width = `${progress}%`;
+                        document.getElementById('pdfProgressText').textContent = 
+                            `Processing ${processed} of ${pdfFiles.length} files...`;
+                    }
+                    
+                    const content = await zip.generateAsync({ type: 'blob' });
+                    const zipUrl = URL.createObjectURL(content);
+                    
+                    document.getElementById('pdfDownloadBtn').href = zipUrl;
+                    document.getElementById('pdfDownloadBtn').download = `pdfs-${new Date().getTime()}.zip`;
+                    
+                    pdfProgressContainer.style.display = 'none';
+                    pdfDownloadContainer.style.display = 'block';
+                    
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('An error occurred during conversion. Please try again.');
+                    pdfConvertBtn.disabled = false;
+                    pdfProgressContainer.style.display = 'none';
+                }
+            });
+
+            // TXT to ZIP Tool
+            const txtFileInput = document.getElementById('txtFileInput');
+            const txtUploadBtn = document.getElementById('txtUploadBtn');
+            const txtFileList = document.getElementById('txtFileList');
+            const txtConvertBtn = document.getElementById('txtConvertBtn');
+            const txtClearAllBtn = document.getElementById('txtClearAllBtn');
+            const txtProgressContainer = document.getElementById('txtProgressContainer');
+            const txtDownloadContainer = document.getElementById('txtDownloadContainer');
+            
+            let txtFiles = [];
+
+            // TXT File selection
+            txtUploadBtn.addEventListener('click', () => txtFileInput.click());
+            txtFileInput.addEventListener('change', handleTxtFileSelect);
+
+            // TXT Drag and drop functionality
+            txtUploadBtn.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                txtUploadBtn.style.borderColor = '#4a6bff';
+                txtUploadBtn.style.backgroundColor = 'rgba(74, 107, 255, 0.1)';
+            });
+
+            txtUploadBtn.addEventListener('dragleave', (e) => {
+                e.preventDefault();
+                txtUploadBtn.style.borderColor = '#ddd';
+                txtUploadBtn.style.backgroundColor = '';
+            });
+
+            txtUploadBtn.addEventListener('drop', (e) => {
+                e.preventDefault();
+                txtUploadBtn.style.borderColor = '#ddd';
+                txtUploadBtn.style.backgroundColor = '';
+                
+                if (e.dataTransfer.files.length) {
+                    txtFileInput.files = e.dataTransfer.files;
+                    handleTxtFileSelect({ target: txtFileInput });
+                }
+            });
+
+            function handleTxtFileSelect(e) {
+                const newFiles = Array.from(e.target.files).filter(file => 
+                    file.type === 'text/plain' || file.name.toLowerCase().endsWith('.txt') || file.name.toLowerCase().endsWith('.text')
+                );
+                
+                if (newFiles.length === 0) {
+                    alert('Please select text files only (.txt or .text).');
+                    return;
+                }
+                
+                txtFiles = newFiles.map(file => ({
+                    file: file,
+                    originalName: file.name,
+                    customName: file.name.replace(/\.[^/.]+$/, "")
+                }));
+                
+                updateTxtFileList();
+                txtFileInput.value = '';
+            }
+
+            function updateTxtFileList() {
+                txtFileList.innerHTML = '';
+                
+                if (txtFiles.length === 0) {
+                    txtFileList.innerHTML = '<div class="text-center py-3 text-muted">No files selected</div>';
+                    txtClearAllBtn.style.display = 'none';
+                    txtConvertBtn.disabled = true;
+                    return;
+                }
+                
+                txtClearAllBtn.style.display = 'inline-block';
+                txtConvertBtn.disabled = false;
+                
+                txtFiles.forEach((fileObj, index) => {
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'file-item';
+                    
+                    fileItem.innerHTML = `
+                        <i class="fas fa-file-alt text-info me-2"></i>
+                        <span class="file-name" title="${fileObj.customName}.txt">${fileObj.customName}.txt</span>
+                        <span class="text-muted me-2">${formatFileSize(fileObj.file.size)}</span>
+                        <button class="action-btn rename-btn" data-index="${index}" title="Rename">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="action-btn remove-btn" data-index="${index}" title="Remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    
+                    txtFileList.appendChild(fileItem);
+                });
+                
+                // Add event listeners for rename/remove
+                document.querySelectorAll('#txtFileList .rename-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const index = e.currentTarget.getAttribute('data-index');
+                        renameTxtFile(index);
+                    });
+                });
+                
+                document.querySelectorAll('#txtFileList .remove-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const index = e.currentTarget.getAttribute('data-index');
+                        txtFiles.splice(index, 1);
+                        updateTxtFileList();
+                    });
+                });
+            }
+            
+            function renameTxtFile(index) {
+                const newName = prompt('Enter new file name (without extension):', txtFiles[index].customName);
+                if (newName && newName.trim() !== '') {
+                    txtFiles[index].customName = newName.trim();
+                    updateTxtFileList();
+                }
+            }
+            
+            txtClearAllBtn.addEventListener('click', () => {
+                txtFiles = [];
+                updateTxtFileList();
+            });
+            
+            txtConvertBtn.addEventListener('click', async function() {
+                if (txtFiles.length === 0) return;
+                
+                txtConvertBtn.disabled = true;
+                txtProgressContainer.style.display = 'block';
+                
+                try {
+                    const zip = new JSZip();
+                    let processed = 0;
+                    
+                    for (const fileObj of txtFiles) {
+                        const fileData = await readFile(fileObj.file);
+                        zip.file(`${fileObj.customName}.txt`, fileData);
+                        
+                        processed++;
+                        const progress = Math.round((processed / txtFiles.length) * 100);
+                        document.getElementById('txtProgressBar').style.width = `${progress}%`;
+                        document.getElementById('txtProgressText').textContent = 
+                            `Processing ${processed} of ${txtFiles.length} files...`;
+                    }
+                    
+                    const content = await zip.generateAsync({ type: 'blob' });
+                    const zipUrl = URL.createObjectURL(content);
+                    
+                    document.getElementById('txtDownloadBtn').href = zipUrl;
+                    document.getElementById('txtDownloadBtn').download = `text-files-${new Date().getTime()}.zip`;
+                    
+                    txtProgressContainer.style.display = 'none';
+                    txtDownloadContainer.style.display = 'block';
+                    
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('An error occurred during conversion. Please try again.');
+                    txtConvertBtn.disabled = false;
+                    txtProgressContainer.style.display = 'none';
+                }
+            });
+
+            // Common functions
+            function readFile(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = e => resolve(e.target.result);
+                    reader.onerror = e => reject(e);
+                    reader.readAsArrayBuffer(file);
+                });
+            }
+            
+            function formatFileSize(bytes) {
+                if (bytes < 1024) return bytes + ' Bytes';
+                if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+                return (bytes / 1048576).toFixed(1) + ' MB';
+            }
+            
+            // Initialize empty file lists
+            updatePdfFileList();
+            updateTxtFileList();
+        });
+    </script>
+</body>
+</html>
