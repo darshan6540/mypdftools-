@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert multiple images to a single ZIP file quickly and easily. Our free online tool supports JPG, PNG, GIF, and more.">
+    <meta name="keywords" content="image to zip, convert images to zip, image compressor, zip converter, online image tools, rename images">
+    <meta name="author" content="Your Company Name">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Free Online Image to ZIP Converter">
+    <meta property="og:description" content="Convert multiple images to a single ZIP file quickly and easily.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/image-to-zip">
+    <meta property="og:image" content="https://yourwebsite.com/images/og-image.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourwebsite.com/image-to-zip">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <title>Image to ZIP Converter with Renaming | Free Online Tool | YourWebsite.com</title>
+    
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #2e59d9;
+            --accent-color: #f8f9fc;
+            --text-color: #5a5c69;
+        }
+        
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-color);
+            background-color: #f8f9fc;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+        }
+        
+        .main-card {
+            border: none;
+            border-radius: 0.35rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .card-header {
+            background-color: var(--accent-color);
+            border-bottom: 1px solid #e3e6f0;
+            font-weight: 700;
+            padding: 1rem 1.35rem;
+        }
+        
+        .drop-area {
+            border: 2px dashed #d1d3e2;
+            border-radius: 0.35rem;
+            padding: 3rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background-color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        .drop-area:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(78, 115, 223, 0.05);
+        }
+        
+        .drop-area.active {
+            border-color: var(--primary-color);
+            background-color: rgba(78, 115, 223, 0.1);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .file-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .file-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.25rem;
+            border-bottom: 1px solid #e3e6f0;
+        }
+        
+        .file-item:last-child {
+            border-bottom: none;
+        }
+        
+        .file-icon {
+            margin-right: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .file-info {
+            flex-grow: 1;
+            min-width: 0;
+        }
+        
+        .file-name-input {
+            width: 100%;
+            padding: 0.25rem;
+            border: 1px solid #d1d3e2;
+            border-radius: 0.25rem;
+            font-size: 0.9rem;
+        }
+        
+        .file-name-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.25);
+        }
+        
+        .file-size {
+            color: #858796;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+        
+        .remove-file {
+            color: #e74a3b;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+        
+        .rename-options {
+            background-color: #f8f9fa;
+            border-radius: 0.35rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .rename-pattern-example {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+        }
+        
+        .ad-container {
+            background-color: #f8f9fa;
+            border: 1px solid #e3e6f0;
+            border-radius: 0.35rem;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            text-align: center;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .ad-label {
+            font-size: 0.75rem;
+            color: #858796;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        
+        .features-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .features-list li {
+            padding: 0.5rem 0;
+        }
+        
+        .features-list li i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+        
+        footer {
+            background-color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            border-top: 1px solid #e3e6f0;
+        }
+        
+        .loading-spinner {
+            display: none;
+            width: 2rem;
+            height: 2rem;
+            border: 0.25em solid rgba(78, 115, 223, 0.2);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .drop-area {
+                padding: 2rem 1rem;
+            }
+            
+            .header {
+                padding: 1.5rem 0;
+            }
+            
+            .file-item {
+                flex-wrap: wrap;
+            }
+            
+            .file-name-input {
+                margin-top: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXX"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1><i class="fas fa-file-archive me-2"></i> Image to ZIP Converter</h1>
+                    <p class="mb-0">Convert and rename multiple images to a single ZIP file</p>
+                </div>
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <span class="badge bg-light text-dark"><i class="fas fa-lock me-1"></i> Secure & Private</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Top Ad Banner -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="ad-container">
+                    <div>
+                        <div class="ad-label">Advertisement</div>
+                        <!-- Replace with your Google AdSense code -->
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                        crossorigin="anonymous"></script>
+                        <!-- ImageToZip_Top_Banner -->
+                        <ins class="adsbygoogle"
+                            style="display:block"
+                            data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                            data-ad-slot="YOUR_AD_SLOT_ID"
+                            data-ad-format="auto"
+                            data-full-width-responsive="true"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Main Converter Card -->
+                <div class="card main-card">
+                    <div class="card-header">
+                        <i class="fas fa-images me-2"></i> Upload Your Images
+                    </div>
+                    <div class="card-body">
+                        <div id="dropArea" class="drop-area">
+                            <i class="fas fa-cloud-upload-alt fa-3x mb-3" style="color: var(--primary-color);"></i>
+                            <h5>Drag & Drop Your Images Here</h5>
+                            <p class="text-muted">or click to browse files</p>
+                            <input type="file" id="fileInput" accept="image/*" multiple style="display: none;">
+                            <button class="btn btn-primary mt-2" id="browseBtn">
+                                <i class="fas fa-folder-open me-2"></i>Select Images
+                            </button>
+                        </div>
+                        
+                        <div id="fileListContainer" style="display: none;">
+                            <!-- Rename Options -->
+                            <div class="rename-options mb-3">
+                                <h6 class="mb-3">Rename Options:</h6>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="renamePattern" class="form-label">Filename Pattern</label>
+                                        <select class="form-select" id="renamePattern">
+                                            <option value="original">Keep original names</option>
+                                            <option value="custom">Custom name with numbering</option>
+                                            <option value="timestamp">Timestamp prefix</option>
+                                            <option value="date">Date prefix</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3" id="customNameContainer" style="display: none;">
+                                        <label for="customName" class="form-label">Custom Name</label>
+                                        <input type="text" class="form-control" id="customName" placeholder="e.g., image">
+                                        <div class="rename-pattern-example">Example: image_1.jpg, image_2.jpg</div>
+                                    </div>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="preserveExt" checked>
+                                    <label class="form-check-label" for="preserveExt">
+                                        Preserve file extensions
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <h6 class="mb-3">Selected Files:</h6>
+                            <div class="file-list" id="fileList"></div>
+                            
+                            <div class="d-flex justify-content-between mt-3">
+                                <button class="btn btn-outline-danger" id="clearAllBtn">
+                                    <i class="fas fa-trash me-2"></i>Clear All
+                                </button>
+                                <button class="btn btn-primary" id="convertBtn">
+                                    <i class="fas fa-file-archive me-2"></i>Convert to ZIP
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div id="loadingSpinner" class="loading-spinner my-4" style="display: none;"></div>
+                        
+                        <div id="downloadContainer" style="display: none;" class="text-center mt-4">
+                            <h5 class="text-success"><i class="fas fa-check-circle me-2"></i>Conversion Complete!</h5>
+                            <a id="downloadLink" class="btn btn-success btn-lg mt-2">
+                                <i class="fas fa-download me-2"></i>Download ZIP File
+                            </a>
+                            <button id="newConversionBtn" class="btn btn-outline-primary mt-2 ms-2">
+                                <i class="fas fa-redo me-2"></i>New Conversion
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Middle Ad Banner (Rectangle) -->
+                <div class="ad-container my-4">
+                    <div>
+                        <div class="ad-label">Advertisement</div>
+                        <!-- Replace with your Google AdSense code -->
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                        crossorigin="anonymous"></script>
+                        <!-- ImageToZip_Mid_Rectangle -->
+                        <ins class="adsbygoogle"
+                            style="display:block"
+                            data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                            data-ad-slot="YOUR_AD_SLOT_ID"
+                            data-ad-format="auto"
+                            data-full-width-responsive="true"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </div>
+                
+                <!-- How It Works Section -->
+                <div class="card main-card">
+                    <div class="card-header">
+                        <i class="fas fa-question-circle me-2"></i> How It Works
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 mb-3 mb-md-0">
+                                <div class="text-center">
+                                    <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                        <i class="fas fa-upload fa-2x text-primary"></i>
+                                    </div>
+                                    <h5 class="mt-3">1. Upload Images</h5>
+                                    <p class="text-muted">Select or drag & drop your image files</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3 mb-md-0">
+                                <div class="text-center">
+                                    <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                        <i class="fas fa-edit fa-2x text-primary"></i>
+                                    </div>
+                                    <h5 class="mt-3">2. Rename (Optional)</h5>
+                                    <p class="text-muted">Choose a renaming pattern if needed</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 80px; height: 80px;">
+                                        <i class="fas fa-download fa-2x text-primary"></i>
+                                    </div>
+                                    <h5 class="mt-3">3. Download ZIP</h5>
+                                    <p class="text-muted">Get your renamed files in a ZIP archive</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <!-- Features Card -->
+                <div class="card main-card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-star me-2"></i> Features
+                    </div>
+                    <div class="card-body">
+                        <ul class="features-list">
+                            <li><i class="fas fa-check"></i> Supports JPG, PNG, GIF, WEBP</li>
+                            <li><i class="fas fa-check"></i> Batch rename images</li>
+                            <li><i class="fas fa-check"></i> Multiple renaming patterns</li>
+                            <li><i class="fas fa-check"></i> No file size limits</li>
+                            <li><i class="fas fa-check"></i> 100% free to use</li>
+                            <li><i class="fas fa-check"></i> No registration required</li>
+                            <li><i class="fas fa-check"></i> Files processed in your browser</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Sidebar Ad (Square) -->
+                <div class="ad-container">
+                    <div>
+                        <div class="ad-label">Advertisement</div>
+                        <!-- Replace with your Google AdSense code -->
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                        crossorigin="anonymous"></script>
+                        <!-- ImageToZip_Sidebar_Square -->
+                        <ins class="adsbygoogle"
+                            style="display:block"
+                            data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                            data-ad-slot="YOUR_AD_SLOT_ID"
+                            data-ad-format="auto"
+                            data-full-width-responsive="true"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </div>
+                
+                <!-- FAQ Card -->
+                <div class="card main-card mt-4">
+                    <div class="card-header">
+                        <i class="fas fa-info-circle me-2"></i> Frequently Asked Questions
+                    </div>
+                    <div class="card-body">
+                        <div class="accordion" id="faqAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                        Can I rename files before zipping?
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        Yes! You can choose from several renaming patterns or set a custom name with automatic numbering. You can also edit each filename individually.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                        Are my images uploaded to a server?
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        No, all processing happens directly in your browser. Your images never leave your device, ensuring complete privacy.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                        What renaming patterns are available?
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        You can keep original names, use custom names with numbering, add timestamps, or use date prefixes. You can also preserve or remove file extensions.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Ad Banner -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="ad-container">
+                    <div>
+                        <div class="ad-label">Advertisement</div>
+                        <!-- Replace with your Google AdSense code -->
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                        crossorigin="anonymous"></script>
+                        <!-- ImageToZip_Bottom_Banner -->
+                        <ins class="adsbygoogle"
+                            style="display:block"
+                            data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                            data-ad-slot="YOUR_AD_SLOT_ID"
+                            data-ad-format="auto"
+                            data-full-width-responsive="true"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Image to ZIP Converter</h5>
+                    <p>A free online tool to convert and rename multiple images to a single ZIP archive.</p>
+                    <p class="text-muted small">&copy; <span id="currentYear"></span> YourWebsite.com. All rights reserved.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms of Service</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Share</h5>
+                    <div class="social-links">
+                        <a href="#" class="me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="me-2"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JSZip library for ZIP creation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    
+    <!-- FileSaver.js for saving files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // DOM elements
+            const dropArea = document.getElementById('dropArea');
+            const fileInput = document.getElementById('fileInput');
+            const browseBtn = document.getElementById('browseBtn');
+            const fileList = document.getElementById('fileList');
+            const fileListContainer = document.getElementById('fileListContainer');
+            const clearAllBtn = document.getElementById('clearAllBtn');
+            const convertBtn = document.getElementById('convertBtn');
+            const downloadContainer = document.getElementById('downloadContainer');
+            const downloadLink = document.getElementById('downloadLink');
+            const newConversionBtn = document.getElementById('newConversionBtn');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const renamePattern = document.getElementById('renamePattern');
+            const customNameContainer = document.getElementById('customNameContainer');
+            const customName = document.getElementById('customName');
+            const preserveExt = document.getElementById('preserveExt');
+            
+            let files = [];
+            let renamedFiles = [];
+            
+            // Event listeners
+            browseBtn.addEventListener('click', () => fileInput.click());
+            
+            fileInput.addEventListener('change', function(e) {
+                files = Array.from(e.target.files);
+                updateFileList();
+            });
+            
+            dropArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.classList.add('active');
+            });
+            
+            dropArea.addEventListener('dragleave', function() {
+                this.classList.remove('active');
+            });
+            
+            dropArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.classList.remove('active');
+                
+                const droppedFiles = e.dataTransfer.files;
+                if (droppedFiles.length > 0) {
+                    files = Array.from(droppedFiles).filter(file => file.type.startsWith('image/'));
+                    updateFileList();
+                }
+            });
+            
+            clearAllBtn.addEventListener('click', clearAllFiles);
+            convertBtn.addEventListener('click', convertToZip);
+            newConversionBtn.addEventListener('click', resetConverter);
+            renamePattern.addEventListener('change', updateRenameOptions);
+            customName.addEventListener('input', updateFileNamesPreview);
+            
+            // Functions
+            function updateFileList() {
+                if (files.length === 0) {
+                    fileListContainer.style.display = 'none';
+                    return;
+                }
+                
+                fileList.innerHTML = '';
+                renamedFiles = [];
+                
+                files.forEach((file, index) => {
+                    const originalName = file.name;
+                    const fileExt = preserveExt.checked ? originalName.split('.').pop() : '';
+                    
+                    // Generate new filename based on selected pattern
+                    let newName = generateNewFilename(originalName, index, fileExt);
+                    
+                    // Store both original and new names
+                    renamedFiles.push({
+                        originalName: originalName,
+                        newName: newName,
+                        file: file,
+                        extension: fileExt
+                    });
+                    
+                    // Create file item UI
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'file-item';
+                    
+                    const fileIcon = document.createElement('i');
+                    fileIcon.className = 'file-icon fas fa-image';
+                    
+                    const fileInfo = document.createElement('div');
+                    fileInfo.className = 'file-info';
+                    
+                    const fileNameInput = document.createElement('input');
+                    fileNameInput.type = 'text';
+                    fileNameInput.className = 'file-name-input';
+                    fileNameInput.value = newName;
+                    fileNameInput.dataset.index = index;
+                    fileNameInput.addEventListener('change', (e) => handleManualRename(e, index));
+                    
+                    const fileSize = document.createElement('div');
+                    fileSize.className = 'file-size';
+                    fileSize.textContent = formatFileSize(file.size);
+                    
+                    const removeFile = document.createElement('i');
+                    removeFile.className = 'remove-file fas fa-times';
+                    removeFile.addEventListener('click', () => removeFileAtIndex(index));
+                    
+                    fileInfo.appendChild(fileNameInput);
+                    fileInfo.appendChild(fileSize);
+                    
+                    fileItem.appendChild(fileIcon);
+                    fileItem.appendChild(fileInfo);
+                    fileItem.appendChild(removeFile);
+                    
+                    fileList.appendChild(fileItem);
+                });
+                
+                fileListContainer.style.display = 'block';
+            }
+            
+            function generateNewFilename(originalName, index, extension) {
+                const pattern = renamePattern.value;
+                const baseName = originalName.substring(0, originalName.lastIndexOf('.'));
+                const ext = extension ? '.' + extension : '';
+                
+                switch(pattern) {
+                    case 'original':
+                        return originalName;
+                    case 'custom':
+                        const customBase = customName.value.trim() || 'image';
+                        return `${customBase}_${index + 1}${ext}`;
+                    case 'timestamp':
+                        const timestamp = new Date().getTime();
+                        return `${timestamp}_${index + 1}${ext}`;
+                    case 'date':
+                        const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+                        return `${dateStr}_${index + 1}${ext}`;
+                    default:
+                        return originalName;
+                }
+            }
+            
+            function handleManualRename(e, index) {
+                const newName = e.target.value.trim();
+                if (newName) {
+                    // Update the renamedFiles array with the manually entered name
+                    renamedFiles[index].newName = newName;
+                    
+                    // If the user manually added an extension, update it
+                    const lastDot = newName.lastIndexOf('.');
+                    if (lastDot > 0 && preserveExt.checked) {
+                        renamedFiles[index].extension = newName.substring(lastDot + 1);
+                    }
+                }
+            }
+            
+            function updateRenameOptions() {
+                customNameContainer.style.display = renamePattern.value === 'custom' ? 'block' : 'none';
+                updateFileNamesPreview();
+            }
+            
+            function updateFileNamesPreview() {
+                if (!fileListContainer.style.display || fileListContainer.style.display === 'none') return;
+                
+                const fileInputs = fileList.querySelectorAll('.file-name-input');
+                fileInputs.forEach((input, index) => {
+                    const originalName = renamedFiles[index].originalName;
+                    const fileExt = preserveExt.checked ? renamedFiles[index].extension : '';
+                    const newName = generateNewFilename(originalName, index, fileExt);
+                    input.value = newName;
+                    renamedFiles[index].newName = newName;
+                });
+            }
+            
+            function removeFileAtIndex(index) {
+                files.splice(index, 1);
+                updateFileList();
+                
+                // Reset file input to allow re-uploading the same files
+                if (files.length === 0) {
+                    fileInput.value = '';
+                }
+            }
+            
+            function clearAllFiles() {
+                files = [];
+                updateFileList();
+                fileInput.value = '';
+            }
+            
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+            
+            async function convertToZip() {
+                if (files.length === 0) {
+                    alert('Please select at least one image file.');
+                    return;
+                }
+                
+                loadingSpinner.style.display = 'block';
+                convertBtn.disabled = true;
+                
+                try {
+                    const zip = new JSZip();
+                    const imgFolder = zip.folder('images');
+                    
+                    // Add each file to the ZIP with its new name
+                    for (let i = 0; i < renamedFiles.length; i++) {
+                        const { file, newName } = renamedFiles[i];
+                        const fileData = await readFileAsArrayBuffer(file);
+                        imgFolder.file(newName, fileData);
+                    }
+                    
+                    // Generate the ZIP file
+                    const content = await zip.generateAsync({ type: 'blob' });
+                    
+                    // Create download link
+                    const zipName = 'images_' + new Date().toISOString().slice(0, 10) + '.zip';
+                    const url = URL.createObjectURL(content);
+                    
+                    downloadLink.href = url;
+                    downloadLink.download = zipName;
+                    
+                    // Show download section
+                    loadingSpinner.style.display = 'none';
+                    fileListContainer.style.display = 'none';
+                    downloadContainer.style.display = 'block';
+                    
+                    // Track conversion in analytics
+                    trackConversion(files.length);
+                } catch (error) {
+                    console.error('Error creating ZIP:', error);
+                    alert('An error occurred while creating the ZIP file. Please try again.');
+                    loadingSpinner.style.display = 'none';
+                    convertBtn.disabled = false;
+                }
+            }
+            
+            function readFileAsArrayBuffer(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = reject;
+                    reader.readAsArrayBuffer(file);
+                });
+            }
+            
+            function resetConverter() {
+                files = [];
+                renamedFiles = [];
+                fileInput.value = '';
+                fileList.innerHTML = '';
+                fileListContainer.style.display = 'none';
+                downloadContainer.style.display = 'none';
+                convertBtn.disabled = false;
+                renamePattern.value = 'original';
+                customNameContainer.style.display = 'none';
+                customName.value = '';
+                preserveExt.checked = true;
+                
+                // Revoke the object URL to free memory
+                if (downloadLink.href) {
+                    URL.revokeObjectURL(downloadLink.href);
+                    downloadLink.removeAttribute('href');
+                }
+            }
+            
+            function trackConversion(fileCount) {
+                // Replace with your analytics tracking code
+                console.log(`Conversion tracked: ${fileCount} files converted`);
+                // Example: gtag('event', 'conversion', { 'event_category': 'ZIP Conversion', 'event_label': fileCount + ' files' });
+            }
+            
+            // Initialize tooltips
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Image to ZIP Converter with Renaming",
+        "url": "https://yourwebsite.com/image-to-zip",
+        "description": "Free online tool to convert and rename multiple images to a single ZIP file quickly and easily.",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "YourWebsite.com"
+        }
+    }
+    </script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXX-X"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-XXXXXX-X');
+    </script>
+</body>
+</html>
